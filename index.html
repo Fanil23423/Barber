@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Barbershop — Мини-приложение</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Telegram Web App (если открыто через Telegram, библиотека будет доступна) -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="top">
+      <div class="avatar-wrap">
+        <!-- заменяй на своё фото или URL -->
+        <img src="https://i.imgur.com/Zx1JwYa.png" alt="avatar" class="avatar" />
+      </div>
+    </header>
+
+    <main class="main">
+      <h1 class="brand">BARBERSHOP</h1>
+      <p class="tag">Стиль — это про уверенность, и я помогу тебе её подчеркнуть.</p>
+
+      <div class="buttons">
+        <button id="btnOpenBooking" class="btn primary">Записаться</button>
+        <button id="btnOpenPrice" class="btn secondary">Прайс услуг</button>
+      </div>
+
+      <div class="quick-actions">
+        <a id="callBtn" class="icon-btn" href="tel:+70000000000" aria-label="Позвонить">
+          📞 Позвонить
+        </a>
+        <a id="chatBtn" class="icon-btn" href="#" aria-label="Написать в Telegram">
+          💬 Написать
+        </a>
+      </div>
+    </main>
+
+    <!-- Прайс (модальное / страница) -->
+    <section id="pricePage" class="panel hidden">
+      <div class="panel-header">
+        <button class="back" data-target="home">←</button>
+        <h2>Прайс услуг</h2>
+      </div>
+      <div id="servicesList" class="services-list"></div>
+    </section>
+
+    <!-- Форма записи -->
+    <section id="bookingPanel" class="panel hidden">
+      <div class="panel-header">
+        <button class="back" data-target="home">←</button>
+        <h2>Запись на услугу</h2>
+      </div>
+
+      <form id="bookingForm" class="form">
+        <label>Выберите мастера
+          <select id="masterSelect"></select>
+        </label>
+
+        <label>Выберите услугу
+          <select id="serviceSelect"></select>
+        </label>
+
+        <label>Выберите дату
+          <input id="dateInput" type="date" />
+        </label>
+
+        <label>Выберите время
+          <div id="timeSlots" class="times"></div>
+        </label>
+
+        <label>Имя
+          <input id="clientName" type="text" placeholder="Ваше имя" required />
+        </label>
+
+        <label>Телефон
+          <input id="clientPhone" type="tel" placeholder="+7..." required />
+        </label>
+
+        <div class="form-actions">
+          <button id="btnSend" type="button" class="btn primary">Отправить</button>
+          <button id="btnSaveLocal" type="button" class="btn ghost">Сохранить локально</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Подтверждение -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
